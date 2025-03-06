@@ -1,0 +1,199 @@
+@model NETCORE.Models.CheckoutViewModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Checkout";
+}
+
+<head>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/NETCORE.styles.css" asp-append-version="true" />
+    <meta property="og:title" content="Thực phẩm sạch Nhanh.vn">
+    <meta property="og:url" content="http://t0307.store.nhanh.vn">
+    <meta property="og:image" content="https://pos.nvncdn.com/16a837-71503/store/20200325_7rMt2KlqTHJrITcloxlSka0u.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
+
+    <style>
+        .form-container-wrapper {
+            display: flex;
+            justify-content: center;
+            /* Căn giữa theo chiều ngang */
+            align-items: center;
+            /* Căn giữa theo chiều dọc */
+            height: 100vh;
+            /* Đảm bảo chiều cao toàn màn hình */
+            width: 100%;
+            /* Đảm bảo chiều rộng toàn màn hình */
+        }
+
+        /* Bao quanh form với một ô có viền */
+        .form-container {
+            padding-top: 300px;
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 30px;
+            width: 90%;
+            /* Đảm bảo form không quá rộng */
+            max-width: 800px;
+            /* Giới hạn độ rộng tối đa */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            /* Đảm bảo form ở giữa màn hình */
+        }
+
+        /* Các phần tử form và ô input xếp theo hàng dọc */
+        .form-group {
+            margin-bottom: 20px;
+            /* Thêm khoảng cách giữa các trường */
+        }
+
+        /* Cải thiện hiển thị của input VND */
+        .vnd-input {
+            padding-left: 10px;
+            /* Khoảng cách trái để chữ VND không chồng lên ô nhập liệu */
+        }
+
+        /* Đảm bảo input-group hoạt động tốt */
+        .input-group {
+            width: 100%;
+            /* Đảm bảo chiều rộng 100% cho input-group */
+        }
+
+        /* Cải thiện hiển thị của nút submit */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            width: 100%;
+            /* Nút submit có chiều rộng 100% */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<div class="form-container-wrapper">
+    <div class="form-container">
+        <form asp-action="Pay">
+            <div class="row">
+                <div class="col-md-4">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <label class="control-label">Payment method</label>
+                    <select asp-for="PaymentMethod" class="form-select" aria-label="Payment method">
+                        <option selected>VNPay</option>
+                    </select>
+                    <div class="form-group">
+                        <label asp-for="FullName" class="control-label"></label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Note" class="control-label"></label>
+                        <textarea asp-for="Note" class="form-control"></textarea>
+                        <span asp-validation-for="Note" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label asp-for="Amount" class="control-label"></label>
+                        <div class="input-group">
+                            <!-- Đặt "VND" bên trái ô nhập tiền -->
+                            <span class="input-group-text">VND</span>
+                            <input onkeyup="formatCurrencyAndConvertToWords(this);" type="text" asp-for="Amount"
+                                class="form-control vnd-input" />
+                        </div>
+                        
+                        <i id="text_amount"></i>
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function formatCurrencyAndConvertToWords(input) {
+            // Lấy giá trị từ input và loại bỏ tất cả các ký tự không phải số
+            let value = input.value.replace(/\D/g, '');
+
+            // Kiểm tra số ký tự không vượt quá 9
+            if (value.length > 9) {
+                value = value.slice(0, 9);
+            }
+
+            // Định dạng số với dấu phân cách nghìn
+            // Định dạng số với dấu phân cách nghìn
+            input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+            // Chuyển số thành chữ và hiển thị
+            document.getElementById('text_amount').innerText = capitalizeFirstLetter(numberToWords(value)) + ' đồng';
+        }
+
+        function numberToWords(num) {
+            if (!num || num === "0") return "không";
+
+            const units = ["", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"];
+            const teens = ["mười", "mười một", "mười hai", "mười ba", "mười bốn", "mười lăm", "mười sáu", "mười bảy", "mười tám", "mười chín"];
+            const tens = ["", "", "hai mươi", "ba mươi", "bốn mươi", "năm mươi", "sáu mươi", "bảy mươi", "tám mươi", "chín mươi"];
+            const thousands = ["", "nghìn", "triệu", "tỷ"];
+
+            let words = '';
+            let k = 0;
+
+            while (num.length > 0) {
+                let chunk = parseInt(num.slice(-3), 10);
+                num = num.slice(0, -3);
+
+                if (chunk) {
+                    let chunkWords = '';
+                    if (chunk > 99) {
+                        chunkWords += units[Math.floor(chunk / 100)] + " trăm ";
+                        chunk %= 100;
+                    }
+                    if (chunk > 19) {
+                        chunkWords += tens[Math.floor(chunk / 10)] + " ";
+                        chunk %= 10;
+                    } else if (chunk > 9) {
+                        chunkWords += teens[chunk - 10] + " ";
+                        chunk = 0;
+                    }
+                    if (chunk > 0) {
+                        chunkWords += units[chunk] + " ";
+                    }
+                    words = chunkWords + thousands[k] + " " + words;
+                }
+                k++;
+            }
+
+            return words.trim();
+        }
+
+        function capitalizeFirstLetter(text) {
+            return text.charAt(0).toUpperCase() + text.slice(1);
+        }
+
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

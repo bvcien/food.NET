@@ -1,0 +1,101 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-KyZXEJf+7C2sCwKYT/X9f+M6g3Yk0vKDoVuFqY5G3Bo9xu+Qk3xC2jXkn2D86RMq" crossorigin="anonymous"></script>
+
+</head>
+<p class="mb-9">Create a new account</p>
+<div class="row">
+    @foreach (var provider in Model.ExternalLogins!)
+    {
+        <div class="col-6">
+            <form asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <button type="submit"
+                    class="btn btn-link border border-muted d-flex align-items-center justify-content-center rounded-2 py-8 text-decoration-none w-100"
+                    name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                    <img src="https://bootstrapdemos.wrappixel.com/materialM/dist/assets/images/svgs/@(provider.Name.ToLower())-icon.svg"
+                        alt="CMS-img" class="img-fluid me-2" width="18" height="18" />
+                    @provider.DisplayName
+                </button>
+            </form>
+        </div>
+    }
+</div>
+<div class="position-relative text-center my-4">
+    <p class="mb-0 fs-4 px-3 d-inline-block bg-body text-dark z-index-5 position-relative">
+        or register with
+    </p>
+    <span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
+</div>
+<form id="account" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+    <div class="row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="mb-3">
+                <label class="form-label" asp-for="Input.PhoneNumber"></label>
+                <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="phone" aria-required="true" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="mb-3">
+                <label class="form-label" asp-for="Input.Dob"></label>
+                <div class="input-group date">
+                    <input asp-for="Input.Dob" type="text" class="form-control" />
+                    <span class="input-group-addon input-group-text">
+                        <i class="ti ti-calendar fs-5"></i>
+                    </span>
+                </div>
+                <span asp-validation-for="Input.Dob" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="mb-3">
+                <label class="form-label" asp-for="Input.FirstName"></label>
+                <input asp-for="Input.FirstName" class="form-control" autocomplete="given-name" aria-required="true" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="mb-3">
+                <label class="form-label" asp-for="Input.LastName"></label>
+                <input asp-for="Input.LastName" class="form-control" autocomplete="family-name" aria-required="true" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Input.Email"></label>
+        <input asp-for="Input.Email" class="form-control" autocomplete="email" aria-required="true" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Input.Password"></label>
+        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Input.ConfirmPassword"></label>
+        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+    </div>
+    <button id="registerSubmit" type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Register</button>
+    <div class="d-flex align-items-center">
+        <a class="text-primary fw-medium ms-2 mb-2" id="forgot-password" asp-page="./Login">Back to Login</a>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

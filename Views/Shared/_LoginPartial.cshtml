@@ -1,0 +1,105 @@
+﻿<!-- ------------------------------- -->
+<!-- start profile Dropdown -->
+<!-- ------------------------------- -->
+<style>
+    .dropdown-menu.content-dd {
+        width: 420px;
+    }
+</style>
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var givenNameClaim = User.Claims.FirstOrDefault(c => c.Type == SystemConstants.Claims.GivenName)?.Value;
+    var avatarClaim = User.Claims.FirstOrDefault(c => c.Type == SystemConstants.Claims.Avatar)?.Value;
+    var roleClaim = User.Claims.FirstOrDefault(c => c.Type == SystemConstants.Claims.Roles)?.Value;
+
+    <li class="nav-item dropdown">
+    <a class="nav-link" href="javascript:void(0)" id="drop1" aria-expanded="false">
+        <div class="d-flex align-items-center gap-2 lh-base">
+            @if (string.IsNullOrEmpty(avatarClaim))
+                {
+                    <span class="avatar avatar-sm text-uppercase gradient-avatar">@givenNameClaim?.ElementAt(0)</span>
+                }
+                else
+                {
+                    <img class="rounded-circle" width="30" height="30" src="/avatars/@avatarClaim" alt="@avatarClaim" />
+                }
+            </div>
+        </a>
+        <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop1">
+            <div class="profile-dropdown position-relative" data-simplebar>
+                <div class="py-3 px-7 pb-0">
+                    <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
+                </div>
+                <div class="d-flex align-items-center py-9 mx-7 border-bottom">
+
+                    @if (string.IsNullOrEmpty(avatarClaim))
+                    {
+                        <span class="avatar avatar-xl text-uppercase gradient-avatar">@givenNameClaim?.ElementAt(0)</span>
+                    }
+                    else
+                    {
+                        <img class="rounded-circle" width="80" height="80" src="/avatars/@avatarClaim" alt="@avatarClaim" />
+                    }
+                    <div class="ms-3">
+                        <h5 class="mb-0 fs-4">@givenNameClaim</h5>
+                        <span class="mb-1 d-block">
+                            <iconify-icon icon="carbon:user-role" class="fs-3 me-1 mt-2"></iconify-icon>
+                            @UtilityHelper.GetRolesInClaim(roleClaim!)</span>
+                        <p class="mb-0 d-flex align-items-center gap-2">
+                            <i class="ti ti-mail fs-4"></i> @User.Identity?.Name
+                        </p>
+                    </div>
+                </div>
+                <div class="message-body">
+                    <a asp-controller="Profile" class="py-8 px-7 mt-8 d-flex align-items-center">
+                        <span
+                            class="d-flex align-items-center justify-content-center bg-primary-subtle text-primary rounded round">
+                            <iconify-icon icon="solar:wallet-2-line-duotone" class="fs-7"></iconify-icon>
+                        </span>
+                        <div class="w-75 v-middle ps-3">
+                            <h5 class="mb-1 fs-3 fw-medium">My Profile</h5>
+                            <span class="fs-2 d-block text-body-secondary">Account Settings</span>
+                        </div>
+                    </a>
+                    <a href="/main/app-email.html" class="py-8 px-7 d-flex align-items-center">
+                        <span
+                            class="d-flex align-items-center justify-content-center bg-success-subtle text-success rounded round">
+                            <iconify-icon icon="solar:inbox-line-duotone" class="fs-7"></iconify-icon>
+                        </span>
+                        <div class="w-75 v-middle ps-3">
+                            <h5 class="mb-1 fs-3 fw-medium">My Inbox</h5>
+                            <span class="fs-2 d-block text-body-secondary">Messages & Emails</span>
+                        </div>
+                    </a>
+                    <a href="/main/app-notes.html" class="py-8 px-7 d-flex align-items-center">
+                        <span
+                            class="d-flex align-items-center justify-content-center bg-danger-subtle text-danger rounded round">
+                            <iconify-icon icon="solar:checklist-minimalistic-line-duotone" class="fs-7"></iconify-icon>
+                        </span>
+                        <div class="w-75 v-middle ps-3">
+                            <h5 class="mb-1 fs-3 fw-medium">My Task</h5>
+                            <span class="fs-2 d-block text-body-secondary">To-do and Daily Tasks</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="d-grid py-4 px-7 pt-8">
+                    <form asp-area="Identity" asp-page="/Account/Logout"
+                        asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="btn btn-primary">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+</li>
+}
+<!-- ------------------------------- -->
+<!-- end profile Dropdown -->
+<!-- ------------------------------- -->

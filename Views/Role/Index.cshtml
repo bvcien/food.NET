@@ -1,0 +1,42 @@
+@model Pagination<NETCORE.Data.Entities.Role>
+
+@{
+    ViewData["Title"] = "Roles Page";
+    Layout ="_LayoutNull";
+}
+
+<h1>Role Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="Index" method="get">
+    <div class="form-group">
+        <label for="searchName">Search by Name:</label>
+        <input type="text" class="form-control" id="searchName" name="searchName" value="@ViewBag.SearchName">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<br />
+@if (@Model.Items != null && @Model.Items.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model.Items)
+            {
+                <tr>
+                    <td>@role.Name</td>
+                    <td>
+                        <a asp-controller="Role" asp-action="Edit" asp-route-id="@role.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

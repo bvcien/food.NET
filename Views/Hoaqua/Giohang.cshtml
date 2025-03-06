@@ -1,0 +1,299 @@
+@model List<CartItem>
+@{
+    Layout = null;
+    <!-- Không sử dụng layout -->
+
+}
+
+<html lang="vi-VN" data-nhanh.vn-template="T0307">
+
+<head>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/NETCORE.styles.css" asp-append-version="true" />
+    <meta property="og:title" content="Thực phẩm sạch Nhanh.vn">
+
+    <meta property="og:url" content="http://t0307.store.nhanh.vn">
+    <meta property="og:image" content="https://pos.nvncdn.com/16a837-71503/store/20200325_7rMt2KlqTHJrITcloxlSka0u.png">
+    <meta name="google-site-verification" content="">
+    <link href="http://t0307.store.nhanh.vn" rel="canonical">
+    <link href="https://pos.nvncdn.com/16a837-71503/store/20200325_ZRJHulhsIfpehzWImFaQoMVt.png" rel="icon"
+        type="image/vnd.microsoft.icon">
+    <link rel="preload" href="https://web.nvnstatic.net/tp/T0307/font/Quicksand-VariableFont_wght.ttf" as="font"
+        type="font/ttf" crossorigin="">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/bootstrap/bootstrap.4.3.1.min.css?v=26" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/fontAwesome/font-awesome-4.7.0.min.css?v=26"
+        type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/fancybox-4.0.31/fancybox_4.0.31.css?v=26"
+        type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/font.css?v=26" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/js/mmenu/css/jquery.mmenu.css?v=26" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/jqueryUI/jqui.css?v=26" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/owlCarousel/owl.carousel.min.2.3.4.css?v=26"
+        type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/appLib.css" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/tp/T0307/css/style.css?v=69" type="text/css">
+
+    <script defer="" type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.cookie.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/bootstrap/boostrap.popper.min.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/jquery/jquery-ui-1.10.3.custom.min.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/bootstrap/bootstrap.4.3.1.min.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/jquery/jquery.number.min.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/jquery/fancybox-4.0.31/fancybox_4.0.31.js?v=104">
+        </script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/owlCarousel/owl.carousel.min.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/mmenu/js/jquery.mmenu.min.js?v=104"></script>
+    <script defer="" type="text/javascript" src="https://web.nvnstatic.net/js/lib.js?v=104"></script>
+    <script defer="" type="text/javascript" src="https://web.nvnstatic.net/tp/T0307/js/main.js?v=54"></script>
+    <style type="text/css"></style>
+    <style type="text/css">
+        img {
+            max-width: 100%;
+        }
+
+        img.lazyload {
+            opacity: 0.001;
+            object-fit: scale-down !important;
+        }
+
+        .fb-customerchat>span>iframe.fb_customer_chat_bounce_out_v2 {
+            max-height: 0 !important;
+        }
+
+        .fb-customerchat>span>iframe.fb_customer_chat_bounce_in_v2 {
+            max-height: calc(100% - 80px) !important;
+        }
+    </style>
+    <script src="https://pos.nvnstatic.net/cache/location.vn.js?v=241216_094852" defer=""></script>
+    <script src="https://web.nvnstatic.net/js/lazyLoad/lazysizes.min.js" async=""></script>
+    <style>
+        figure.image {
+            clear: both;
+            display: table;
+            margin: .9em auto;
+            min-width: 50px;
+            text-align: center;
+            width: auto !important;
+        }
+
+        figure.image img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            min-width: 100%;
+        }
+
+        figure.image>figcaption {
+            background-color: #f7f7f7;
+            caption-side: bottom;
+            color: #333;
+            display: block;
+            font-size: .75em;
+            outline-offset: -1px;
+            padding: .6em;
+            word-break: break-word;
+        }
+
+        figure.image img,
+        img.image_resized {
+            height: auto !important;
+            aspect-ratio: auto !important;
+        }
+    </style>
+    <script src="https://web.nvnstatic.net/js/translate/vi-vn.js" defer=""></script>
+</head>
+
+
+<body id="lama-theme" class="tp_background tp_text_color" style="">
+    @(await Component.InvokeAsync("NavMobile"))
+
+    <div class="container top-header d-none d-lg-flex flex-wrap">
+        <div class="col-md-2 lare-logo">
+            <a href="/" class="d-inline-block">
+                <img src="https://pos.nvncdn.com/16a837-71503/store/20200325_7rMt2KlqTHJrITcloxlSka0u.png" alt="Logo">
+            </a>
+            <!-- #region    -->
+        </div>
+        @(await Component.InvokeAsync("Navbar"))
+
+    </div>
+    </div>
+    </header>
+</body>
+<link rel="canonical" href="/cart">
+<script defer="" type="text/javascript" src="https://web.nvnstatic.net/tp/T0307/js/cart.js?v=3"></script>
+<div class="bread-crumb text-center bread-crumb_background"
+    style=" background-image: url('https://pos.nvncdn.com/16a837-71503/bn/20220325_5UxI8S76E0NIJxh0znPFxEOw.png');">
+    <h3>Giỏ hàng</h3>
+    <ul class="breadcrumb breadcrumb-arrow">
+        <li>
+            <a href="/">Trang chủ</a>
+        </li>
+        <li>
+            <a asp-controller="Hoaqua" asp-action="Giohang"> giỏ hàng </a>
+        </li>
+    </ul>
+</div>
+<!-- thẻ đóng file banner_product -->
+@if (Model.Count == 0)
+{
+    <p>Giỏ hàng của bạn trống.</p>
+}
+else
+{
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="cart-body">
+                <div class="item-cart">
+                    <!-- Hình ảnh sản phẩm -->
+                    <div class="item-cart__product-img">
+                        <a href="/">
+                            <img src="~/@item.ImageUrl" alt="Product Image" style="width: 70px; height: 70px; object-fit: cover;">
+                        </a>
+                    </div>
+                    <!-- Thông tin sản phẩm -->
+                    <div class="item-cart__product-infor">
+                        <a href="/" class="item-cart__product-name">@item.Title</a>
+                        <p class="item-cart__product-price">
+                            @item.Price.ToString("#,0") VND
+                        </p>
+                    </div>
+                    <!-- Số lượng sản phẩm -->
+                    <div class="item-cart__product-amount text-center">
+                        <input type="button" class="button minus" value="-" data-id="@item.Id">
+                        <input class="updateCart quantity" type="number" name="quantity" value="@item.Quantity"
+                            data-id="@item.Id" pattern="\d*" min="1" max="5000">
+                        <input type="button" class="button plus" value="+" data-id="@item.Id">
+                        <span class="cart__remove ajaxcart__remove removeCart" data-id="@item.Id">Xóa</span>
+                    </div>
+                    <!-- Tổng tiền -->
+                    <div class="item-cart__total">
+                        <p class="text-right">Tổng tiền :</p>
+                        <p class="text-right">
+                            <span>@((item.Quantity * item.Price).ToString("#,0")) VND</span>
+                        </p>
+
+                        <p class="text-right">
+                            <span class="removeCart" data-id="@item.Id"><i class="fa fa-trash" aria-hidden="true"></i>
+                                Xóa</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        }
+        <div class="cart-total total-bill clearfix">
+            Tổng giá giỏ hàng: <span class="cart-total-price">0</span>
+        </div>
+        <div class="action-cart">
+            <a asp-action="Hoaqua">Tiếp tục mua sắm</a>
+            <a class="tp_button" asp-controller="Pays" asp-action="Pay">Đặt hàng ngay</a>
+        </div>
+    </div>
+
+}
+
+<script>
+    let total = 0; // Khởi tạo biến tổng tiền
+
+    // Hàm cập nhật tổng tiền
+    function updateTotalPrice() {
+        total = 0;  // Reset tổng trước khi tính toán lại
+
+        document.querySelectorAll('.item-cart').forEach(item => {
+            const quantity = parseInt(item.querySelector('.quantity').value); // Lấy số lượng sản phẩm
+            const price = parseFloat(item.querySelector('.item-cart__product-price').textContent.replace('đ', '').trim()); // Lấy giá sản phẩm
+            const itemTotal = quantity * price; // Tính tổng tiền của item
+
+            // Cập nhật lại tổng tiền cho từng item
+            item.querySelector('.item-cart__total span').textContent = itemTotal.toLocaleString() + ' đ';
+
+            // Cộng dồn vào tổng giỏ hàng
+            total += itemTotal;
+        });
+
+        // Cập nhật tổng tiền của toàn bộ giỏ hàng
+        document.querySelector('.cart-total-price').textContent = total.toLocaleString() + ' đ';
+    }
+
+    // Lắng nghe sự kiện thay đổi giá trị của input quantity
+    document.querySelectorAll('.quantity').forEach(input => {
+        input.addEventListener('input', function () {
+            updateTotalPrice();  // Cập nhật tổng tiền sau khi thay đổi số lượng
+        });
+    });
+
+    // Lắng nghe sự kiện nhấn nút cộng
+    document.querySelectorAll('.button.plus').forEach(button => {
+        button.addEventListener('click', function () {
+            const quantityInput = button.closest('.item-cart__product-amount').querySelector('.quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1; // Tăng số lượng lên 1
+            updateTotalPrice();  // Cập nhật tổng tiền
+        });
+    });
+
+    // Lắng nghe sự kiện nhấn nút trừ
+    document.querySelectorAll('.button.minus').forEach(button => {
+        button.addEventListener('click', function () {
+            const quantityInput = button.closest('.item-cart__product-amount').querySelector('.quantity');
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1; // Giảm số lượng xuống 1
+                updateTotalPrice();  // Cập nhật tổng tiền
+            }
+        });
+    });
+    document.querySelectorAll('.removeCart').forEach(button => {
+        button.addEventListener('click', function () {
+            const item = button.closest('.item-cart');
+            item.remove(); // Xóa sản phẩm khỏi giỏ hàng
+            updateTotalPrice(); // Cập nhật tổng tiền sau khi xóa sản phẩm
+        });
+    });
+</script>
+<!-- Modal Quickbuy-->
+
+
+@* @model List<CartItem>
+
+<h2>Giỏ hàng</h2>
+
+@if (Model.Count == 0)
+{
+    <p>Giỏ hàng của bạn trống.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Hình ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Tổng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@item.ImageUrl" style="width: 50px; height: 50px; object-fit: cover;" /></td>
+                    <td>@item.Title</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Quantity * item.Price)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a href="@Url.Action("Checkout", "Cart")" class="btn btn-primary">Tiến hành thanh toán</a> *@

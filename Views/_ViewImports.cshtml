@@ -1,0 +1,13 @@
+﻿@using NETCORE
+@using NETCORE.Models
+
+
+@using NETCORE.Data.Entities
+@using Newtonsoft.Json
+@using NETCORE.Utils.Constants
+@using NETCORE.Utils
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

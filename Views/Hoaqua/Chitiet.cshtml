@@ -1,0 +1,498 @@
+@model NETCORE.Models.Hoaqua
+
+@{
+    Layout = null;
+    <!-- Không sử dụng layout -->
+    var anotherModel = ViewData["AnotherModel"] as NETCORE.Models.CartItem;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="robots" content="noindex">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--    , maximum-scale=1.0-->
+    <title>@ViewData["Title"] - NETCORE</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/btn.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/NETCORE.styles.css" asp-append-version="true" />
+    <meta property="og:title" content="Thực phẩm sạch Nhanh.vn">
+    <meta property="og:url" content="http://t0307.store.nhanh.vn">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://web.nvnstatic.net/js/lazyLoad/lazysizes.min.js" async=""></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <meta property="og:image" content="https://pos.nvncdn.com/16a837-71503/store/20200325_7rMt2KlqTHJrITcloxlSka0u.png">
+    <meta name="google-site-verification" content="">
+    <link href="http://t0307.store.nhanh.vn" rel="canonical">
+    <link href="https://pos.nvncdn.com/16a837-71503/store/20200325_ZRJHulhsIfpehzWImFaQoMVt.png" rel="icon"
+        type="image/vnd.microsoft.icon">
+    <link rel="preload" href="https://web.nvnstatic.net/tp/T0307/font/Quicksand-VariableFont_wght.ttf" as="font"
+        type="font/ttf" crossorigin="">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/bootstrap/bootstrap.4.3.1.min.css?v=26" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/fontAwesome/font-awesome-4.7.0.min.css?v=26"
+        type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/fancybox-4.0.31/fancybox_4.0.31.css?v=26"
+        type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/font.css?v=26" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/js/mmenu/css/jquery.mmenu.css?v=26" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/jqueryUI/jqui.css?v=26" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/owlCarousel/owl.carousel.min.2.3.4.css?v=26"
+        type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/css/appLib.css" type="text/css">
+    <link rel="stylesheet" href="https://web.nvnstatic.net/tp/T0307/css/style.css?v=69" type="text/css">
+    <script defer="" type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.min.js?v=104"></script>
+    <script defer="" type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.cookie.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/bootstrap/boostrap.popper.min.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/jquery/jquery-ui-1.10.3.custom.min.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/bootstrap/bootstrap.4.3.1.min.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/jquery/jquery.number.min.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/jquery/fancybox-4.0.31/fancybox_4.0.31.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/owlCarousel/owl.carousel.min.js?v=104"></script>
+    <script defer="" type="text/javascript"
+        src="https://web.nvnstatic.net/js/mmenu/js/jquery.mmenu.min.js?v=104"></script>
+    <script defer="" type="text/javascript" src="https://web.nvnstatic.net/js/lib.js?v=104"></script>
+    <script defer="" type="text/javascript" src="https://web.nvnstatic.net/tp/T0307/js/main.js?v=54"></script>
+    <style type="text/css"></style>
+    <style type="text/css">
+        img {
+            max-width: 100%;
+        }
+
+        img.lazyload {
+            opacity: 0.001;
+            object-fit: scale-down !important;
+        }
+
+        .fb-customerchat>span>iframe.fb_customer_chat_bounce_out_v2 {
+            max-height: 0 !important;
+        }
+
+        .fb-customerchat>span>iframe.fb_customer_chat_bounce_in_v2 {
+            max-height: calc(100% - 80px) !important;
+        }
+    </style>
+    <script src="https://pos.nvnstatic.net/cache/location.vn.js?v=241216_094852" defer=""></script>
+    <script src="https://web.nvnstatic.net/js/lazyLoad/lazysizes.min.js" async=""></script>
+    <style>
+        figure.image {
+            clear: both;
+            display: table;
+            margin: .9em auto;
+            min-width: 50px;
+            text-align: center;
+            width: auto !important;
+        }
+
+        figure.image img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            min-width: 100%;
+        }
+
+        figure.image>figcaption {
+            background-color: #f7f7f7;
+            caption-side: bottom;
+            color: #333;
+            display: block;
+            font-size: .75em;
+            outline-offset: -1px;
+            padding: .6em;
+            word-break: break-word;
+        }
+
+        figure.image img,
+        img.image_resized {
+            height: auto !important;
+            aspect-ratio: auto !important;
+        }
+    </style>
+    <script src="https://web.nvnstatic.net/js/translate/vi-vn.js" defer=""></script>
+</head>
+
+
+<script defer="" type="text/javascript" src="https://web.nvnstatic.net/tp/T0307/js/index.js?v=10"></script>
+<script src="https://web.nvnstatic.net/js/lazyLoad/lazysizes.min.js" async=""></script>
+</style>
+
+<body id="lama-theme" class="tp_background tp_text_color">
+    @* mobile_child ---------------------------------------------  *@
+    @(await Component.InvokeAsync("NavMobile"))
+    @* -----------end mobile_child ------------ *@
+    <div class="container top-header d-none d-lg-flex flex-wrap">
+        <div class="col-md-2 lare-logo">
+            <a href="/" class="d-inline-block">
+                <img src="https://pos.nvncdn.com/16a837-71503/store/20200325_7rMt2KlqTHJrITcloxlSka0u.png" alt="Logo">
+            </a>
+            <!-- #region    -->
+        </div>
+        @(await Component.InvokeAsync("Navbar"))
+
+    </div>
+    </div>
+    </header>
+</body>
+
+<div class="container tp_product_detail">
+    <div class="row">
+
+        <!-- Image Section -->
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="img-main">
+                <div class="viewswiper-img" style="display:block">
+                    <img id="z" width="100%" class="cloudzoom" src="~/@Model.ImageUrl"
+                        data-cloudzoom="zoomImage: 'https://pos.nvncdn.com/16a837-71503/ps/20220323_IWRUx3Gy6r2e8bQza60JmpnC.jpg',
+                         easeTime: 0, zoomPosition: 4, easing: 0, disableZoom: false, zoomFlyOut: false, zoomWidth: 450, zoomHeight: 450, disableOnScreenWidth: 1024"
+                        alt="Nho đỏ có hạt Peru">
+                </div>
+            </div>
+            <div class="slide-thumb owl-carousel owl-theme">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px);">
+                        <div class="owl-item active" style="width: 40.5px; margin-right: 10px;">
+                            <img class="cloudzoom-gallery" role="thumb" onclick="roleVideo(this)"
+                                data-cloudzoom="useZoom: '#z', image: 'https://pos.nvncdn.com/16a837-71503/ps/20220323_sSHb3bVU9eNudzwmxFV9H0sg.jpg', 
+                                 zoomImage: 'https://pos.nvncdn.com/16a837-71503/ps/20220323_sSHb3bVU9eNudzwmxFV9H0sg.jpg'"
+                                src="https://pos.nvncdn.com/16a837-71503/ps/20220323_sSHb3bVU9eNudzwmxFV9H0sg.jpg"
+                                alt="Nho đỏ có hạt Peru" data-pos="0">
+                        </div>
+                        <!-- More thumbnails here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail Section -->
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+            <h1 class="detail-product-name">
+                <a class="text2line tp_product_detail_name" href="" title="Nho đỏ có hạt Peru">@Model.Title</a>
+            </h1>
+            <div class="status">
+                <span><span>Thương hiệu:</span> <span class="a-brand">Đang cập nhật</span></span> |
+                <span><span>Tình trạng:</span> <span class="value">Còn hàng</span></span>
+            </div>
+            <div class="evaluate">
+                <span id="StarTotal" class="star-rating vote-view">
+                    <i class="fa fa-star star-1"></i>
+                    <i class="fa fa-star star-2"></i>
+                    <i class="fa fa-star star-3"></i>
+                    <i class="fa fa-star star-4"></i>
+                    <i class="fa fa-star star-5"></i>
+                </span>
+            </div>
+            <div class="price_box">
+
+                <span class="prices">
+                    <span class="price tp_product_detail_price">@Model.Price.ToString("#,0") VND</span>
+                </span>
+            </div>
+            <div class="rte text4line">
+                Chưa có mô tả cho sản phẩm này
+            </div>
+            <form class="quick_option variants">
+                <span class="price-product-detail hidden" style="opacity: 0;"></span>
+                <select name="variantId" class="hidden" style="display:none"></select>
+                <div class="clearfix"></div>
+                <div class="quantity_wanted_p">
+
+                    <div class="input_qty_qv">
+                        <span> Số lượng : </span>
+
+                        <input type="button" class="button minus" value="-">
+                        <input class="updateCart quantity" type="number" name="quantity" value="1" data-id="37601636"
+                            pattern="\d*" min="1" max="5000">
+                        <input type="button" class="button plus" value="+">
+
+
+
+                    </div>
+                    <a asp-controller="Hoaqua" asp-action="AddToCart" asp-route-id="@Model.Id" asp-route-quantity="1"
+                        class="btncss ">
+                        <span>Thêm vào giỏ hàng</span>
+                    </a>
+
+                </div>
+            </form>
+            <div class="call">
+                <span>Gọi đặt mua: <a href="tel:1900.2812">1900.2812</a> để nhanh chóng đặt hàng</span>
+            </div>
+        </div>
+
+
+        <!-- Banner Section -->
+        <div class="col-12 mg-top">
+            <a href="javascript:void(0);">
+                <img class="lazyautosizes"
+                    src="https://pos.nvncdn.com/16a837-71503/bn/20220325_5ZHIz0RKNZ2Nfhx1Zcj4OSts.png"
+                    data-src="https://pos.nvncdn.com/16a837-71503/bn/20220325_5ZHIz0RKNZ2Nfhx1Zcj4OSts.png"
+                    alt="chi tiết" sizes="510px">
+            </a>
+        </div>
+
+        <!-- Tabs Section -->
+        <div class="col-lg-12 pro-detail-tabs">
+            <ul class="nav text-center" id="pills-tab" role="tablist">
+                <li class="nav-item tp_product_description">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                        aria-controls="pills-home" aria-selected="true">Mô tả sản phẩm</a>
+                </li>
+                <li class="nav-item tp_product_content">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                        aria-controls="pills-profile" aria-selected="false">Chi tiết sản phẩm</a>
+                </li>
+                <li class="nav-item tp_product_detail_comment">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                        aria-controls="pills-contact" aria-selected="false">Bình luận</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane pview-desc fade show active" id="pills-home" role="tabpanel"
+                    aria-labelledby="pills-home-tab">
+                    <p><strong>Tiêu chuẩn chất lượng:</strong> Nhập khẩu</p>
+                    <p><strong>Điểm đặc biệt nổi bật:</strong> Trái to tròn, thịt dày, mọng nước, vỏ mỏng, thích hợp với
+                        khẩu vị mê chua nhẹ.</p>
+                    <p><strong>Thông tin dinh dưỡng:</strong></p>
+                    <ul>
+                        <li>Tăng cường sức khỏe cho tim mạch, ngăn chặn sự tích kết tụ tiểu huyết cầu, giảm huyết áp.
+                        </li>
+                        <li>Tốt cho thị giác nhờ Vitamin A và hợp chất flavonol.</li>
+                        <li>Resveratrol trong vỏ nho chống oxy hóa mạnh, phòng chống các bệnh về tuổi già.</li>
+                        <li>Có tác dụng chữa chứng đau nửa đầu, tăng cường hệ miễn dịch.</li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <p><strong>Tiêu chuẩn chất lượng:</strong> Nhập khẩu</p>
+                    <p><strong>Điểm đặc biệt nổi bật:</strong> Trái to tròn, thịt dày, mọng nước, vỏ mỏng, thích hợp với
+                        khẩu vị mê chua nhẹ.</p>
+                    <p><strong>Thông tin dinh dưỡng:</strong></p>
+                    <ul>
+                        <li>Tăng cường sức khỏe cho tim mạch, ngăn chặn sự tích kết tụ tiểu huyết cầu, giảm huyết áp.
+                        </li>
+                        <li>Tốt cho thị giác nhờ Vitamin A và hợp chất flavonol.</li>
+                        <li>Resveratrol trong vỏ nho chống oxy hóa mạnh, phòng chống các bệnh về tuổi già.</li>
+                        <li>Có tác dụng chữa chứng đau nửa đầu, tăng cường hệ miễn dịch.</li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div id="ratelink" class="rate-link-v2">
+                        <div class="product_rate-v2 block container">
+                            <div class="the_comment_add-v2">
+                                <form>
+                                    <div class="row row-rate rate">
+                                        <span>Đánh giá của bạn về sản phẩm: </span>
+                                        <div id="voteView3" class="vote-view">
+                                            <i class="fa fa-star star-1 star_item" data-rate="1"></i>
+                                            <i class="fa fa-star star-2 star_item" data-rate="2"></i>
+                                            <i class="fa fa-star star-3 star_item" data-rate="3"></i>
+                                            <i class="fa fa-star star-4 star_item" data-rate="4"></i>
+                                            <i class="fa fa-star star-5 star_item" data-rate="5"></i>
+                                        </div>
+                                    </div>
+                                    <textarea placeholder="Viết đánh giá" id="commentText" name="comment"
+                                        class="form-control" required=""></textarea>
+                                    <button class="btn-custom" id="submit_comment" data-pid="37601635"
+                                        data-storeid="71503">Thêm đánh giá</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="title section_about tp_product_detail_suggest">
+    <h2 class="text-center"><span class="text_gradient tp_title">Sản phẩm gợi ý</span></h2>
+</div>
+
+<div class="slider_2 tp_product_detail_suggest owl-carousel owl-theme owl-loaded owl-drag">
+    <div class="owl-stage-outer">
+        <div class="owl-stage" style="transform: translate3d(-540px, 0px, 0px); transition: 0.25s; width: 1080px;">
+            <div class="owl-item" style="width: 150px; margin-right: 30px;">
+                <div class="product text-center">
+                    <div class="img-product" onclick="window.location.href='/cam-cara-my-p37601543.html';">
+                        <img data-sizes="auto" class="card-img-top lazyautosizes ls-is-cached lazyloaded"
+                            src="https://pos.nvncdn.com/16a837-71503/ps/20220323_fbVOna7sVrVwl9HNDMu4aFTS.jpg"
+                            data-src="https://pos.nvncdn.com/16a837-71503/ps/20220323_fbVOna7sVrVwl9HNDMu4aFTS.jpg"
+                            alt="Cam Cara Mỹ" sizes="261px">
+                    </div>
+                    <div hidden="" class="group-action">
+                        <a href="#" class="quick-buy" selid="37601543" root="-2" data-link="/cam-cara-my-p37601543.html"
+                            title="Cho vào giỏ">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="quick-view" data-id="37601543">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-name_">
+                            <a class="product-name tp_product_name" href="/cam-cara-my-p37601543.html">Cam Cara Mỹ</a>
+                        </div>
+                        <div class="price-box">
+                            <span class="price tp_product_price">169,000₫</span>
+                            <span class="old-price tp_product_price_old">200,000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-item" style="width: 150px; margin-right: 30px;">
+                <div class="product text-center">
+                    <div class="img-product" onclick="window.location.href='/nho-do-keo-hello-uc-p37601430.html';">
+                        <img data-sizes="auto" class="card-img-top lazyautosizes ls-is-cached lazyloaded"
+                            src="https://pos.nvncdn.com/16a837-71503/ps/20220323_JZMhLhJJcvw7XWIaRlpnZJTX.jpg"
+                            data-src="https://pos.nvncdn.com/16a837-71503/ps/20220323_JZMhLhJJcvw7XWIaRlpnZJTX.jpg"
+                            alt="Nho đỏ kẹo Hello Úc" sizes="261px">
+                    </div>
+                    <div hidden="" class="group-action">
+                        <a href="#" class="quick-buy" selid="37601430" root="-2"
+                            data-link="/nho-do-keo-hello-uc-p37601430.html" title="Cho vào giỏ">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="quick-view" data-id="37601430">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-name_">
+                            <a class="product-name tp_product_name" href="/nho-do-keo-hello-uc-p37601430.html">Nho đỏ
+                                kẹo Hello Úc</a>
+                        </div>
+                        <div class="price-box">
+                            <span class="price tp_product_price">199,000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-item" style="width: 150px; margin-right: 30px;">
+                <div class="product text-center">
+                    <div class="img-product" onclick="window.location.href='/le-han-quoc-size-m-p37601399.html';">
+                        <img data-sizes="auto" class="card-img-top lazyautosizes ls-is-cached lazyloaded"
+                            src="https://pos.nvncdn.com/16a837-71503/ps/20220323_Qw7snp292jmRH4iUMn5Gc4Ob.jpg"
+                            data-src="https://pos.nvncdn.com/16a837-71503/ps/20220323_Qw7snp292jmRH4iUMn5Gc4Ob.jpg"
+                            alt="Lê Hàn Quốc Size M" sizes="261px">
+                    </div>
+                    <div hidden="" class="group-action">
+                        <a href="#" class="quick-buy" selid="37601399" root="-2"
+                            data-link="/le-han-quoc-size-m-p37601399.html" title="Cho vào giỏ">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="quick-view" data-id="37601399">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-name_">
+                            <a class="product-name tp_product_name" href="/le-han-quoc-size-m-p37601399.html">Lê Hàn
+                                Quốc Size M</a>
+                        </div>
+                        <div class="price-box">
+                            <span class="price tp_product_price">139,000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-item active" style="width: 150px; margin-right: 30px;">
+                <div class="product text-center">
+                    <div class="img-product" onclick="window.location.href='/nho-xanh-sweet-globe-uc-p37601382.html';">
+                        <img data-sizes="auto" class="card-img-top lazyautosizes ls-is-cached lazyloaded"
+                            src="https://pos.nvncdn.com/16a837-71503/ps/20220323_SVTU81kP7gGTizKM1CeRsjVj.jpg"
+                            data-src="https://pos.nvncdn.com/16a837-71503/ps/20220323_SVTU81kP7gGTizKM1CeRsjVj.jpg"
+                            alt="Nho Xanh Sweet Globe Úc" sizes="261px">
+                    </div>
+                    <div hidden="" class="group-action">
+                        <a href="#" class="quick-buy" selid="37601382" root="-2"
+                            data-link="/nho-xanh-sweet-globe-uc-p37601382.html" title="Cho vào giỏ">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="quick-view" data-id="37601382">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-name_">
+                            <a class="product-name tp_product_name" href="/nho-xanh-sweet-globe-uc-p37601382.html">Nho
+                                Xanh Sweet Globe Úc</a>
+                        </div>
+                        <div class="price-box">
+                            <span class="price tp_product_price">150,000₫</span>
+                            <span class="old-price tp_product_price_old">169,000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-item active" style="width: 150px; margin-right: 30px;">
+                <div class="product text-center">
+                    <div class="img-product"
+                        onclick="window.location.href='/man-xanh-october-sun-ucst-p37601368.html';">
+                        <img data-sizes="auto" class="card-img-top lazyautosizes ls-is-cached lazyloaded"
+                            src="https://pos.nvncdn.com/16a837-71503/ps/20220323_zJKHuJ5wheuaLAL29QnZyKsu.jpg"
+                            data-src="https://pos.nvncdn.com/16a837-71503/ps/20220323_zJKHuJ5wheuaLAL29QnZyKsu.jpg"
+                            alt="Mận xanh October Sun Úc" sizes="261px">
+                    </div>
+                    <div hidden="" class="group-action">
+                        <a href="#" class="quick-buy" selid="37601368" root="-2"
+                            data-link="/man-xanh-october-sun-uc-p37601368.html" title="Cho vào giỏ">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="quick-view" data-id="37601368">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-name_">
+                            <a class="product-name tp_product_name" href="/man-xanh-october-sun-uc-p37601368.html">Mận
+                                xanh October Sun Úc</a>
+                        </div>
+                        <div class="price-box">
+                            <span class="price tp_product_price">194,000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-item active" style="width: 150px; margin-right: 30px;">
+                <div class="product text-center">
+                    <div class="img-product" onclick="window.location.href='/tao-do-fuji-nhat-ban-p37601324.html';">
+                        <img data-sizes="auto" class="card-img-top lazyautosizes ls-is-cached lazyloaded"
+                            src="https://pos.nvncdn.com/16a837-71503/ps/20220323_nj1e09QbFG6UbNWUnVzvOVBn.jpg"
+                            data-src="https://pos.nvncdn.com/16a837-71503/ps/20220323_nj1e09QbFG6UbNWUnVzvOVBn.jpg"
+                            alt="Táo đỏ Fuji Nhật Bản" sizes="261px">
+                    </div>
+                    <div hidden="" class="group-action">
+                        <a href="#" class="quick-buy" selid="37601324" root="-2"
+                            data-link="/tao-do-fuji-nhat-ban-p37601324.html" title="Cho vào giỏ">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="quick-view" data-id="37601324">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-name_">
+                            <a class="product-name tp_product_name" href="/tao-do-fuji-nhat-ban-p37601324.html">Táo đỏ
+                                Fuji Nhật Bản</a>
+                        </div>
+                        <div class="price-box">
+                            <span class="price tp_product_price">149,000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@(await Component.InvokeAsync("Footer"))

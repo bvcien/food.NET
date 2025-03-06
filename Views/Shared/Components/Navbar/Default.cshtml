@@ -1,0 +1,114 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<div class="col-md-8 menu-item">
+    <ul class="nav nav-pills header_menu tp_menu">
+        <li class="tp_menu_item" data-link="/">
+            <a class="tp_menu_item" href="/" title="Trang chủ">Trang chủ</a>
+        </li>
+        <li class="tp_menu_item" asp-controller="Home" asp-action="Privacy">
+            <a class="tp_menu_item" asp-controller="Home" asp-action="Privacy" title="Sản phẩm">
+                Sản phẩm
+                <span class="caret"></span>
+            </a>
+            <ul class="list_sp tp_menu">
+                <li class="dropdown-submenu clearfix tp_menu_item">
+                    <a class="lv2 tp_menu_item" asp-controller="Home" asp-action="Raucu">Rau Củ</a>
+                </li>
+                <li class="dropdown-submenu clearfix tp_menu_item">
+                    <a class="lv2 tp_menu_item" asp-controller="Hoaqua" asp-action="Hoaqua">Hoa quả tươi</a>
+                </li>
+                <li class="dropdown-submenu clearfix tp_menu_item">
+                    <a class="lv2 tp_menu_item" asp-controller="Home" asp-action="Thucphamsong">Thực phẩm tươi sống</a>
+                </li>
+                <li class="dropdown-submenu clearfix tp_menu_item">
+                    <a class="lv2 tp_menu_item" asp-controller="Home" asp-action="Ngucoc">Ngũ cốc</a>
+                </li>
+            </ul>
+        </li>
+        <li class="tp_menu_item" asp-controller="Home" asp-action="Tintuc">
+            <a class="tp_menu_item" asp-controller="Home" asp-action="Tintuc" title="Tin tức">Tin tức</a>
+        </li>
+        <li class="tp_menu_item" data-link="/lien-he">
+            <a class="tp_menu_item" asp-controller="Home" asp-action="Lienhe" title="Liên hệ">Liên hệ</a>
+        </li>
+        <li class="tp_menu_item" data-link="http://t0338.store.nhanh.vn/may-tinh-xach-tay-pc567702.html">
+            <a class="tp_menu_item" href="http://t0338.store.nhanh.vn/may-tinh-xach-tay-pc567702.html"
+                title="Sale Up To 50%">Sale Up To 50%</a>
+        </li>
+        @if (User.IsInRole("Administrator"))
+        {
+            <li class="tp_menu_item">
+                <a asp-area="Admin" asp-controller="Movies" asp-action="Index" title="Admin">Admin</a>
+            </li>
+        }
+
+
+    </ul>
+</div>
+
+<div class="lare-icon col-md-2">
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                    @User.Identity.Name
+                </a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                    asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>
+        }
+    </ul>
+
+    <div class="cart-bag">
+        <a asp-controller="Hoaqua" asp-action="Giohang">
+            <div style="position: relative;">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                <span class="cout_cart" id="cart-item-count">0</span> <!-- Product count in cart -->
+            </div>
+        </a>
+
+        <!-- Cart content -->
+        <div class="top-cart-content">
+            <div class="header-minicart">
+                <p class="text-center" id="cart-empty-message">Giỏ hàng không có sản phẩm!</p>
+                <div id="cart-item-list" style="display: none;">
+                    <ul id="cart-products">
+                        <!-- Products will be added here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="user">
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+    </div>
+
+    <div class="seach">
+        <i class="fa fa-search iconSearchDesktop" aria-hidden="true"></i>
+        <div class="searchmini">
+            <form action="/search" method="get" class="form-group search-bar" role="search">
+                <input type="text" name="q" placeholder="Tìm kiếm..." class="button_gradient form-control auto-search">
+                <button type="submit" class="btn icon-fallback-text">
+                    <span class="fa fa-search"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

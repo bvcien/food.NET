@@ -1,0 +1,44 @@
+@model Pagination<NETCORE.Data.Entities.User>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutNull";
+}
+
+<h1>User Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="Index" method="get">
+    <div class="form-group">
+        <label for="searchName">Search by Name:</label>
+        <input type="text" class="form-control" id="searchName" name="searchName" value="@ViewBag.SearchName">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<br />
+@if (@Model.Items != null && @Model.Items.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Items)
+            {
+                <tr>
+                    <td>@user.Email</td>
+                    <td>
+                        <a asp-area="" asp-controller="User" asp-action="Edit" asp-route-id="@user.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@* @(await Component.InvokeAsync("Pager", Model)) *@

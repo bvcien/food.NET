@@ -1,0 +1,69 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "/Views/Shared/_LayoutEmpty.cshtml";
+}
+
+<p class="mb-9">Your Admin Dashboard</p>
+<div class="row">
+    @foreach (var provider in Model.ExternalLogins!)
+    {
+        <div class="col-6">
+            <form asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <button type="submit"
+                    class="btn btn-link border border-muted d-flex align-items-center justify-content-center rounded-2 py-8 text-decoration-none w-100"
+                    name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                    <img src="https://bootstrapdemos.wrappixel.com/materialM/dist/assets/images/svgs/@(provider.Name.ToLower())-icon.svg"
+                        alt="CMS-img" class="img-fluid me-2" width="18" height="18" />
+                    @provider.DisplayName
+                </button>
+            </form>
+        </div>
+    }
+</div>
+<div class="position-relative text-center my-4">
+    <p class="mb-0 fs-4 px-3 d-inline-block bg-body text-dark z-index-5 position-relative">
+        or sign in with
+    </p>
+    <span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
+</div>
+<form id="account" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+    <div class="mb-3">
+        <label asp-for="Input.Email" class="form-label">Email</label>
+        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div class="mb-4">
+        <label asp-for="Input.Password" class="form-label">Password</label>
+        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+    <div class="checkbox mb-3">
+        <label asp-for="Input.RememberMe" class="form-label">
+            <input class="form-check-input" asp-for="Input.RememberMe" />
+            @Html.DisplayNameFor(m => m.Input.RememberMe)
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Log In</button>
+    <div class="d-flex align-items-center">
+        <a class="text-primary fw-medium ms-2 mb-2" id="forgot-password" asp-page="./ForgotPassword">Forgot your
+            password?</a>
+    </div>
+    <div class="d-flex align-items-center">
+        <a class="text-primary fw-medium ms-2 mb-2" asp-page="./Register"
+            asp-route-returnUrl="@Model.ReturnUrl">Register as a new
+            user</a>
+    </div>
+    <div class="d-flex align-items-center">
+        <a class="text-primary fw-medium ms-2 mb-2" id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend
+            email
+            confirmation</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
